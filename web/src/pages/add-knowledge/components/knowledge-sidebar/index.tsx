@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'umi';
 import { KnowledgeRouteKey } from '../../constant';
 
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { GitGraph } from 'lucide-react';
 import styles from './index.less';
 

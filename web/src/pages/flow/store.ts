@@ -13,9 +13,9 @@ import {
   applyEdgeChanges,
   applyNodeChanges,
 } from '@xyflow/react';
-import { omit } from 'lodash';
 import differenceWith from 'lodash/differenceWith';
 import intersectionWith from 'lodash/intersectionWith';
+import omit from 'lodash/omit';
 import lodashSet from 'lodash/set';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';

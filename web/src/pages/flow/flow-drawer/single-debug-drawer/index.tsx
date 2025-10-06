@@ -3,7 +3,7 @@ import { useDebugSingle, useFetchInputElements } from '@/hooks/flow-hooks';
 import { IModalProps } from '@/interfaces/common';
 import { CloseOutlined } from '@ant-design/icons';
 import { Drawer } from 'antd';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import JsonView from 'react18-json-view';

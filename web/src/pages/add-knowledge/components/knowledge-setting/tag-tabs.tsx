@@ -1,6 +1,6 @@
 import { Segmented } from 'antd';
 import { SegmentedLabeledOption } from 'antd/es/segmented';
-import { upperFirst } from 'lodash';
+import upperFirst from 'lodash/upperFirst';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TagTable } from './tag-table';

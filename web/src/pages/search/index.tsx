@@ -29,7 +29,7 @@ import {
   Tooltip,
 } from 'antd';
 import DOMPurify from 'dompurify';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import MarkdownContent from '../chat/markdown-content';

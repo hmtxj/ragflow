@@ -4,7 +4,7 @@ import { ICategorizeNode } from '@/interfaces/database/flow';
 import { Handle, NodeProps, Position } from '@xyflow/react';
 import { Flex } from 'antd';
 import classNames from 'classnames';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import { RightHandleStyle } from './handle-icon';
 import { useBuildCategorizeHandlePositions } from './hooks';
 import styles from './index.less';

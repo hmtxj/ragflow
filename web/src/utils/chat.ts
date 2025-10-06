@@ -1,7 +1,7 @@
 import { EmptyConversationId } from '@/constants/chat';
 import { Message } from '@/interfaces/database/chat';
 import { IMessage } from '@/pages/chat/interface';
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 import { v4 as uuid } from 'uuid';
 
 export const isConversationIdExist = (conversationId: string) => {

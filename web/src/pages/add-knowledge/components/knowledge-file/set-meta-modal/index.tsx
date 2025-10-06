@@ -1,13 +1,11 @@
 import { IModalProps } from '@/interfaces/common';
 import { IDocumentInfo } from '@/interfaces/database/document';
-import Editor, { loader } from '@monaco-editor/react';
-
 import { Form, Modal } from 'antd';
 import DOMPurify from 'dompurify';
-import { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-loader.config({ paths: { vs: '/vs' } });
+const LazyMonacoEditor = React.lazy(() => import('@monaco-editor/react'));
 
 type FieldType = {
   meta?: string;
@@ -21,6 +19,7 @@ export function SetMetaModal({
 }: IModalProps<any> & { initialMetaData?: IDocumentInfo['meta_fields'] }) {
   const { t } = useTranslation();
   const [form] = Form.useForm();
+  const [monacoReady, setMonacoReady] = useState(false);
 
   const handleOk = useCallback(async () => {
     const values = await form.validateFields();
@@ -30,6 +29,20 @@ export function SetMetaModal({
   useEffect(() => {
     form.setFieldValue('meta', JSON.stringify(initialMetaData, null, 4));
   }, [form, initialMetaData]);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const mod = await import('@monaco-editor/react');
+        mod.loader?.config({ paths: { vs: '/vs' } });
+        if (!cancelled) setMonacoReady(true);
+      } catch {}
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <Modal
@@ -73,7 +86,17 @@ export function SetMetaModal({
             ></div>
           }
         >
-          <Editor height={200} defaultLanguage="json" theme="vs-dark" />
+          <React.Suspense fallback={<div style={{ height: 200 }} />}>
+            {monacoReady ? (
+              React.createElement(LazyMonacoEditor as any, {
+                height: 200,
+                defaultLanguage: 'json',
+                theme: 'vs-dark',
+              })
+            ) : (
+              <div style={{ height: 200 }} />
+            )}
+          </React.Suspense>
         </Form.Item>
       </Form>
     </Modal>

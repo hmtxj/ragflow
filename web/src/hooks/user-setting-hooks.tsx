@@ -18,7 +18,7 @@ import userService, {
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Modal, message } from 'antd';
 import DOMPurify from 'dompurify';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { history } from 'umi';

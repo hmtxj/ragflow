@@ -1,6 +1,6 @@
 import { useTranslate } from '@/hooks/common-hooks';
 import { Divider, Form, Select, Switch } from 'antd';
-import { upperFirst } from 'lodash';
+import upperFirst from 'lodash/upperFirst';
 import { useCallback, useMemo } from 'react';
 import EntityTypesItem from '../entity-types-item';
 

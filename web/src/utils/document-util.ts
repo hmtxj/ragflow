@@ -2,7 +2,7 @@ import { Images, SupportedPreviewDocumentTypes } from '@/constants/common';
 import { IReferenceChunk } from '@/interfaces/database/chat';
 import { IChunk } from '@/interfaces/database/knowledge';
 import { UploadFile } from 'antd';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import { v4 as uuid } from 'uuid';
 
 export const buildChunkHighlights = (

@@ -28,7 +28,10 @@ import {
 } from '@/interfaces/database/flow';
 import { FormInstance, message } from 'antd';
 import { humanId } from 'human-id';
-import { get, isEmpty, lowerFirst, pick } from 'lodash';
+import get from 'lodash/get';
+import isEmpty from 'lodash/isEmpty';
+import lowerFirst from 'lodash/lowerFirst';
+import pick from 'lodash/pick';
 import trim from 'lodash/trim';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuid } from 'uuid';

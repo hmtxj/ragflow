@@ -2,7 +2,7 @@ import { EditableCell, EditableRow } from '@/components/editable-cell';
 import { useTranslate } from '@/hooks/common-hooks';
 import { DeleteOutlined } from '@ant-design/icons';
 import { Button, Collapse, Flex, Input, Select, Table, TableProps } from 'antd';
-import { trim } from 'lodash';
+import trim from 'lodash/trim';
 import { useBuildComponentIdSelectOptions } from '../../hooks/use-get-begin-query';
 import { IInvokeVariable, RAGFlowNodeType } from '../../interface';
 import { useHandleOperateParameters } from './hooks';

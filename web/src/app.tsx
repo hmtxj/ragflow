@@ -1,12 +1,11 @@
 import i18n from '@/locales/config';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { App, ConfigProvider, ConfigProviderProps, theme } from 'antd';
+import pt_BR from 'antd/lib/locale/pt_BR';
 import enUS from 'antd/locale/en_US';
 import vi_VN from 'antd/locale/vi_VN';
 import zhCN from 'antd/locale/zh_CN';
 import zh_HK from 'antd/locale/zh_HK';
-import pt_BR from 'antd/lib/locale/pt_BR';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -66,7 +65,18 @@ function Root({ children }: React.PropsWithChildren) {
       >
         <App> {children}</App>
       </ConfigProvider>
-      <ReactQueryDevtools buttonPosition={'top-left'} />
+      {process.env.NODE_ENV !== 'production' ? (
+        <React.Suspense fallback={null}>
+          {/** Lazy-load devtools to exclude from production bundle */}
+          {React.createElement(
+            React.lazy(async () => {
+              const mod = await import('@tanstack/react-query-devtools');
+              return { default: mod.ReactQueryDevtools } as any;
+            }),
+            { buttonPosition: 'top-left' },
+          )}
+        </React.Suspense>
+      ) : null}
     </>
   );
 }

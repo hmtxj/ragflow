@@ -1,10 +1,10 @@
-import Editor, { loader } from '@monaco-editor/react';
 import { Form, Input, InputNumber, Select, Space, Switch } from 'antd';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IOperatorForm } from '../../interface';
 import DynamicVariablesForm from './dynamic-variables';
 
-loader.config({ paths: { vs: '/vs' } });
+const LazyMonacoEditor = React.lazy(() => import('@monaco-editor/react'));
 
 enum Method {
   GET = 'GET',
@@ -33,6 +33,21 @@ const TimeoutInput = ({ value, onChange }: TimeoutInputProps) => {
 
 const InvokeForm = ({ onValuesChange, form, node }: IOperatorForm) => {
   const { t } = useTranslation();
+  const [monacoReady, setMonacoReady] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const mod = await import('@monaco-editor/react');
+        mod.loader?.config({ paths: { vs: '/vs' } });
+        if (!cancelled) setMonacoReady(true);
+      } catch {}
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <>
@@ -57,7 +72,17 @@ const InvokeForm = ({ onValuesChange, form, node }: IOperatorForm) => {
           <TimeoutInput></TimeoutInput>
         </Form.Item>
         <Form.Item name={'headers'} label={t('flow.headers')}>
-          <Editor height={200} defaultLanguage="json" theme="vs-dark" />
+          <React.Suspense fallback={<div style={{ height: 200 }} />}>
+            {monacoReady ? (
+              React.createElement(LazyMonacoEditor as any, {
+                height: 200,
+                defaultLanguage: 'json',
+                theme: 'vs-dark',
+              })
+            ) : (
+              <div style={{ height: 200 }} />
+            )}
+          </React.Suspense>
         </Form.Item>
         <Form.Item name={'proxy'} label={t('flow.proxy')}>
           <Input />

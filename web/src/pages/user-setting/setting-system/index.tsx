@@ -11,7 +11,7 @@ import upperFirst from 'lodash/upperFirst';
 import { useEffect } from 'react';
 
 import { toFixed } from '@/utils/common-util';
-import { isObject } from 'lodash';
+import isObject from 'lodash/isObject';
 import styles from './index.less';
 import TaskBarChat from './task-bar-chat';
 

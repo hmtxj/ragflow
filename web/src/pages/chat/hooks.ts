@@ -27,7 +27,7 @@ import { getFileExtension } from '@/utils';
 import api from '@/utils/api';
 import { getConversationId } from '@/utils/chat';
 import { useMutationState } from '@tanstack/react-query';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import trim from 'lodash/trim';
 import {
   ChangeEventHandler,
