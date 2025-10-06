@@ -8,9 +8,13 @@ import { removeUselessFieldsFromValues } from '@/utils/form';
 import { Edge, Node, Position, XYPosition } from '@xyflow/react';
 import { FormInstance, FormListFieldData } from 'antd';
 import { humanId } from 'human-id';
-import { curry, get, intersectionWith, isEqual, sample } from 'lodash';
+import curry from 'lodash/curry';
 import pipe from 'lodash/fp/pipe';
+import get from 'lodash/get';
+import intersectionWith from 'lodash/intersectionWith';
+import isEqual from 'lodash/isEqual';
 import isObject from 'lodash/isObject';
+import sample from 'lodash/sample';
 import { v4 as uuidv4 } from 'uuid';
 import {
   CategorizeAnchorPointPositions,

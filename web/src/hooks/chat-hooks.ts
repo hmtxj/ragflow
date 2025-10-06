@@ -21,7 +21,8 @@ import {
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { message } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
-import { has, set } from 'lodash';
+import has from 'lodash/has';
+import set from 'lodash/set';
 import { useCallback, useMemo, useState } from 'react';
 import { history, useSearchParams } from 'umi';
 

@@ -12,7 +12,7 @@ import { PaginationProps, message } from 'antd';
 import { FormInstance } from 'antd/lib';
 import axios from 'axios';
 import { EventSourceParserStream } from 'eventsource-parser/stream';
-import { omit } from 'lodash';
+import omit from 'lodash/omit';
 import {
   ChangeEventHandler,
   useCallback,

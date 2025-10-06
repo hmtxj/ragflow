@@ -6,7 +6,7 @@ import {
 } from '@/hooks/logic-hooks';
 import { Message } from '@/interfaces/database/chat';
 import { message } from 'antd';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import trim from 'lodash/trim';
 import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'umi';

@@ -8,8 +8,8 @@ import flowService from '@/services/flow-service';
 import { buildMessageListWithUuid } from '@/utils/chat';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { message } from 'antd';
-import { set } from 'lodash';
 import get from 'lodash/get';
+import set from 'lodash/set';
 import { useParams } from 'umi';
 import { v4 as uuid } from 'uuid';
 

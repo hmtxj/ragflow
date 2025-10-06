@@ -1,6 +1,6 @@
 import classNames from 'classnames';
+import React from 'react';
 import Markdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
@@ -27,14 +27,16 @@ const HightLightMarkdown = ({
             const { children, className, node, ...rest } = props;
             const match = /language-(\w+)/.exec(className || '');
             return match ? (
-              <SyntaxHighlighter
-                {...rest}
-                PreTag="div"
-                language={match[1]}
-                // style={dark}
-              >
-                {String(children).replace(/\n$/, '')}
-              </SyntaxHighlighter>
+              <React.Suspense fallback={<div />}>
+                {React.createElement(
+                  React.lazy(async () => {
+                    const mod = await import('react-syntax-highlighter');
+                    return { default: mod.Prism } as any;
+                  }),
+                  { ...rest, PreTag: 'div', language: match[1] },
+                  String(children).replace(/\n$/, ''),
+                )}
+              </React.Suspense>
             ) : (
               <code {...rest} className={`${className} ${styles.code}`}>
                 {children}

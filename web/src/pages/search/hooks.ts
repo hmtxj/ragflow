@@ -7,7 +7,10 @@ import {
 } from '@/hooks/logic-hooks';
 import { IAnswer } from '@/interfaces/database/chat';
 import api from '@/utils/api';
-import { get, isEmpty, isEqual, trim } from 'lodash';
+import get from 'lodash/get';
+import isEmpty from 'lodash/isEmpty';
+import isEqual from 'lodash/isEqual';
+import trim from 'lodash/trim';
 import {
   ChangeEventHandler,
   useCallback,

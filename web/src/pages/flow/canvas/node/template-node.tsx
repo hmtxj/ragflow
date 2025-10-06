@@ -2,7 +2,7 @@ import { useTheme } from '@/components/theme-provider';
 import { Handle, NodeProps, Position } from '@xyflow/react';
 import { Flex } from 'antd';
 import classNames from 'classnames';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import { useGetComponentLabelByValue } from '../../hooks/use-get-begin-query';
 import { IGenerateParameter } from '../../interface';
 import { LeftHandleStyle, RightHandleStyle } from './handle-icon';

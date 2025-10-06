@@ -4,6 +4,8 @@ import { defineConfig } from 'umi';
 import { appName } from './src/conf.json';
 import routes from './src/routes';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 export default defineConfig({
   title: appName,
   outputPath: 'dist',
@@ -30,7 +32,7 @@ export default defineConfig({
       hack: `true; @import "~@/less/index.less";`,
     },
   },
-  devtool: 'source-map',
+  devtool: isProd ? false : 'source-map',
   copy: [
     { from: 'src/conf.json', to: 'dist/conf.json' },
     { from: 'node_modules/monaco-editor/min/vs/', to: 'dist/vs/' },
@@ -49,7 +51,9 @@ export default defineConfig({
   chainWebpack(memo, args) {
     memo.module.rule('markdown').test(/\.md$/).type('asset/source');
 
-    memo.optimization.minimizer('terser').use(TerserPlugin); // Fixed the issue that the page displayed an error after packaging lexical with terser
+    if (isProd) {
+      memo.optimization.minimizer('terser').use(TerserPlugin); // Fixed the issue that the page displayed an error after packaging lexical with terser
+    }
 
     return memo;
   },

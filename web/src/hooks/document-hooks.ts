@@ -13,7 +13,7 @@ import { buildChunkHighlights } from '@/utils/document-util';
 import { post } from '@/utils/request';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { UploadFile, message } from 'antd';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import { useCallback, useMemo, useState } from 'react';
 import { IHighlight } from 'react-pdf-highlighter';
 import {

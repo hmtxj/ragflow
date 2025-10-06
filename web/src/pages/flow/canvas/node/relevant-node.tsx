@@ -5,7 +5,7 @@ import { RightHandleStyle } from './handle-icon';
 
 import { useTheme } from '@/components/theme-provider';
 import { IRelevantNode } from '@/interfaces/database/flow';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import { useReplaceIdWithName } from '../../hooks';
 import styles from './index.less';
 import NodeHeader from './node-header';

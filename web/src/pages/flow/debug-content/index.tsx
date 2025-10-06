@@ -16,7 +16,7 @@ import {
   Upload,
 } from 'antd';
 import { UploadChangeParam, UploadFile } from 'antd/es/upload';
-import { pick } from 'lodash';
+import pick from 'lodash/pick';
 import { Link } from 'lucide-react';
 import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';

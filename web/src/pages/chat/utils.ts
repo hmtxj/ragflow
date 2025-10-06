@@ -1,6 +1,6 @@
 import { MessageType } from '@/constants/chat';
 import { IConversation, IReference } from '@/interfaces/database/chat';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { EmptyConversationId } from './constants';
 import { IMessage } from './interface';
 

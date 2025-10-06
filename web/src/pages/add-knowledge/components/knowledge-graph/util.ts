@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { v4 as uuid } from 'uuid';
 
 class KeyGenerator {

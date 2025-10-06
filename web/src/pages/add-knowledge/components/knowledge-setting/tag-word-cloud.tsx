@@ -1,6 +1,6 @@
 import { useFetchTagList } from '@/hooks/knowledge-hooks';
 import { Chart } from '@antv/g2';
-import { sumBy } from 'lodash';
+import sumBy from 'lodash/sumBy';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 
 export function TagWordCloud() {
